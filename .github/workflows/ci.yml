@@ -22,6 +22,9 @@ jobs:
       - name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@main
 
+      - name: Tap this repository
+        run: brew tap idvoretskyi/homebrew-tap $GITHUB_WORKSPACE
+
       - name: Audit all formulae
         run: brew audit --strict $(ls Formula/*.rb | xargs -n1 basename | sed 's/\.rb$//')
 
@@ -34,8 +37,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6.0.2
 
-      - name: Install formula from local file
-        run: brew install --formula Formula/cncf-maintainers.rb
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@main
+
+      - name: Tap this repository
+        run: brew tap idvoretskyi/homebrew-tap $GITHUB_WORKSPACE
+
+      - name: Install formula from tap
+        run: brew install cncf-maintainers
 
       - name: Verify binary version
         run: cncf-maintainers --version | grep -q "0.1.0"
@@ -45,7 +54,9 @@ jobs:
 
       - name: Cleanup
         if: always()
-        run: brew uninstall cncf-maintainers || true
+        run: |
+          brew uninstall cncf-maintainers || true
+          brew untap idvoretskyi/homebrew-tap || true
 
   e2e-linux:
     name: E2E test (Linux)
@@ -59,8 +70,11 @@ jobs:
       - name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@main
 
-      - name: Install formula from local file
-        run: brew install --formula Formula/cncf-maintainers.rb
+      - name: Tap this repository
+        run: brew tap idvoretskyi/homebrew-tap $GITHUB_WORKSPACE
+
+      - name: Install formula from tap
+        run: brew install cncf-maintainers
 
       - name: Verify binary version
         run: cncf-maintainers --version | grep -q "0.1.0"
@@ -70,4 +84,6 @@ jobs:
 
       - name: Cleanup
         if: always()
-        run: brew uninstall cncf-maintainers || true
+        run: |
+          brew uninstall cncf-maintainers || true
+          brew untap idvoretskyi/homebrew-tap || true
