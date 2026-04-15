@@ -18,11 +18,9 @@ brew install idvoretskyi/tap/<formula>
 
 ## Formulae
 
-<!-- formulae list will be populated here -->
-
 | Formula | Description | Version |
 |---------|-------------|---------|
-| _(coming soon)_ | | |
+| [`cncf-maintainers`](Formula/cncf-maintainers.rb) | CLI to validate GitHub usernames against the CNCF maintainers list | `0.1.0` |
 
 ## License
 
