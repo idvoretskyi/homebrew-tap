@@ -23,7 +23,7 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@main
 
       - name: Tap this repository
-        run: brew tap idvoretskyi/homebrew-tap $GITHUB_WORKSPACE
+        run: brew tap idvoretskyi/tap $GITHUB_WORKSPACE
 
       - name: Audit all formulae
         run: brew audit --strict $(ls Formula/*.rb | xargs -n1 basename | sed 's/\.rb$//')
@@ -41,7 +41,7 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@main
 
       - name: Tap this repository
-        run: brew tap idvoretskyi/homebrew-tap $GITHUB_WORKSPACE
+        run: brew tap idvoretskyi/tap $GITHUB_WORKSPACE
 
       - name: Install formula from tap
         run: brew install cncf-maintainers
@@ -71,7 +71,7 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@main
 
       - name: Tap this repository
-        run: brew tap idvoretskyi/homebrew-tap $GITHUB_WORKSPACE
+        run: brew tap idvoretskyi/tap $GITHUB_WORKSPACE
 
       - name: Install formula from tap
         run: brew install cncf-maintainers
