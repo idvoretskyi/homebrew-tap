@@ -19,8 +19,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6.0.2
 
-      - name: Update Homebrew
-        run: brew update
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
 
       - name: Audit all formulae
         run: brew audit --strict Formula/*.rb
@@ -55,6 +55,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6.0.2
+
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
 
       - name: Install formula from local file
         run: brew install --formula Formula/cncf-maintainers.rb
