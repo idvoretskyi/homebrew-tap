@@ -25,7 +25,7 @@ jobs:
 
       # ── Filesystem / config scan ───────────────────────────────────────────
       - name: Run Trivy (filesystem – SARIF)
-        uses: aquasecurity/trivy-action@v0.35.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           scan-type: fs
           scan-ref: .
@@ -43,7 +43,7 @@ jobs:
 
       # ── Table output for easy PR reading ───────────────────────────────────
       - name: Run Trivy (filesystem – table)
-        uses: aquasecurity/trivy-action@v0.35.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           scan-type: fs
           scan-ref: .
