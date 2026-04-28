@@ -41,7 +41,9 @@ jobs:
         run: brew install cncf-maintainers
 
       - name: Verify binary version
-        run: cncf-maintainers --version | grep -q "0.1.0"
+        run: |
+          EXPECTED=$(grep -E '^\s*version\s+"' Formula/cncf-maintainers.rb | sed -E 's/.*"(.*)".*/\1/')
+          cncf-maintainers --version | grep -q "$EXPECTED"
 
       - name: Run brew test
         run: brew test cncf-maintainers
@@ -66,7 +68,9 @@ jobs:
         run: brew install cncf-maintainers
 
       - name: Verify binary version
-        run: cncf-maintainers --version | grep -q "0.1.0"
+        run: |
+          EXPECTED=$(grep -E '^\s*version\s+"' Formula/cncf-maintainers.rb | sed -E 's/.*"(.*)".*/\1/')
+          cncf-maintainers --version | grep -q "$EXPECTED"
 
       - name: Run brew test
         run: brew test cncf-maintainers
