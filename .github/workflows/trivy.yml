@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6.0.3
+        uses: actions/checkout@v7.0.1
 
       # ── Filesystem / config scan ───────────────────────────────────────────
       - name: Run Trivy (filesystem – SARIF)
@@ -35,7 +35,7 @@ jobs:
           exit-code: "0"   # don't fail the job; let the SARIF upload surface results
 
       - name: Upload Trivy filesystem SARIF to GitHub Security
-        uses: github/codeql-action/upload-sarif@v4.36.1
+        uses: github/codeql-action/upload-sarif@v4.37.3
         if: always()
         with:
           sarif_file: trivy-fs.sarif
