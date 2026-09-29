@@ -4,7 +4,6 @@
 class CncfMaintainers < Formula
   desc "CLI to validate GitHub usernames against the CNCF maintainers list"
   homepage "https://github.com/idvoretskyi/cncf-github-maintainers"
-  version "0.2.0"
   license "Apache-2.0"
 
   on_macos do
