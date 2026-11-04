@@ -4,7 +4,6 @@
 class AwsS3CostExplorer < Formula
   desc "CLI to retrieve S3 storage costs and storage tiers for AWS buckets"
   homepage "https://github.com/idvoretskyi/aws-s3-cost-explorer"
-  version "0.0.1"
   license "MIT"
 
   on_macos do
