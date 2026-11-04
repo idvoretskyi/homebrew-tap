@@ -25,7 +25,7 @@ brew install idvoretskyi/tap/<formula>
 
 | Formula | Description | Version |
 |---------|-------------|---------|
-| [`cncf-maintainers`](Formula/cncf-maintainers.rb) | CLI to validate GitHub usernames against the CNCF maintainers list | `0.1.0` |
+| [`aws-s3-cost-explorer`](Formula/aws-s3-cost-explorer.rb) | CLI tool to retrieve S3 storage costs and storage tiers for buckets in your AWS account | `0.0.1` |
 
 ## License
 

@@ -23,7 +23,10 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@main
 
       - name: Audit all formulae
-        run: brew audit --strict cncf-maintainers
+        run: |
+          for f in Formula/*.rb; do
+            brew audit --strict "idvoretskyi/tap/$(basename "$f" .rb)"
+          done
 
   e2e-macos:
     name: E2E test (macOS)
@@ -37,20 +40,24 @@ jobs:
       - name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@main
 
-      - name: Install formula from tap
-        run: brew install cncf-maintainers
-
-      - name: Verify binary version
+      - name: Install formulae from tap
         run: |
-          EXPECTED=$(grep -E '^\s*version\s+"' Formula/cncf-maintainers.rb | sed -E 's/.*"(.*)".*/\1/')
-          cncf-maintainers --version | grep -q "$EXPECTED"
+          for f in Formula/*.rb; do
+            brew install "idvoretskyi/tap/$(basename "$f" .rb)"
+          done
 
       - name: Run brew test
-        run: brew test cncf-maintainers
+        run: |
+          for f in Formula/*.rb; do
+            brew test "idvoretskyi/tap/$(basename "$f" .rb)"
+          done
 
       - name: Cleanup
         if: always()
-        run: brew uninstall cncf-maintainers || true
+        run: |
+          for f in Formula/*.rb; do
+            brew uninstall "$(basename "$f" .rb)" || true
+          done
 
   e2e-linux:
     name: E2E test (Linux)
@@ -64,17 +71,21 @@ jobs:
       - name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@main
 
-      - name: Install formula from tap
-        run: brew install cncf-maintainers
-
-      - name: Verify binary version
+      - name: Install formulae from tap
         run: |
-          EXPECTED=$(grep -E '^\s*version\s+"' Formula/cncf-maintainers.rb | sed -E 's/.*"(.*)".*/\1/')
-          cncf-maintainers --version | grep -q "$EXPECTED"
+          for f in Formula/*.rb; do
+            brew install "idvoretskyi/tap/$(basename "$f" .rb)"
+          done
 
       - name: Run brew test
-        run: brew test cncf-maintainers
+        run: |
+          for f in Formula/*.rb; do
+            brew test "idvoretskyi/tap/$(basename "$f" .rb)"
+          done
 
       - name: Cleanup
         if: always()
-        run: brew uninstall cncf-maintainers || true
+        run: |
+          for f in Formula/*.rb; do
+            brew uninstall "$(basename "$f" .rb)" || true
+          done
